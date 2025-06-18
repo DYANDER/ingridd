@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>PARA TI INGRIDD UWU</title>
@@ -193,4 +191,3 @@
     }, 300);
   </script>
 </body>
-</html>
