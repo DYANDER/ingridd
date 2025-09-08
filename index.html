@@ -2,26 +2,102 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>PARA TI INGRIDD UWU</title>
+  <title>Para Ti Ingridd 💖</title>
   <style>
-    body {
-      background: linear-gradient(to bottom, #000, #330000);
-      height: 100vh;
-      overflow-x: hidden;
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
 
+    /* BODY con imagen + overlay */
+    body {
+      background: url("3.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      color: #fff;
+      line-height: 1.6;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55); /* capa transparente oscura */
+      z-index: -1;
+    }
+
+    /* HEADER romántico */
+    header {
+      background: rgba(255, 20, 147, 0.7); /* rosa chicle translúcido */
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      border-bottom: 3px solid #ff69b4;
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    /* CONTENEDORES */
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 15px;
+      background: radial-gradient(circle, rgba(255,182,193,0.9) 0%, rgba(255,255,255,0.8) 100%);
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      color: #333;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+    }
+    .card h3 {
+      color: #e91e63;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ANIMACIÓN corazones y palabras */
     .palabra-lluvia {
       position: absolute;
       top: -50px;
       left: 50%;
       transform: translateX(-50%);
-      color: red;
-      font-size: 2.5em;
+      color: #ffb6c1;
+      font-size: 2em;
       font-weight: bold;
-      animation: caer 4s linear infinite;
+      animation: caer 6s linear infinite;
+      text-shadow: 0 0 10px rgba(255,105,180,0.9);
     }
-
     @keyframes caer {
       0% { top: -50px; opacity: 0; }
       10% { opacity: 1; }
@@ -36,150 +112,91 @@
       transform: rotate(45deg);
       animation: flotar 10s linear infinite;
     }
-
     .corazon::before, .corazon::after {
       content: "";
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 20px; height: 20px;
       background: red;
       border-radius: 50%;
     }
-
     .corazon::before { top: -10px; left: 0; }
-    .corazon::after  { top: 0; left: -10px; }
-
+    .corazon::after { top: 0; left: -10px; }
     @keyframes flotar {
       0% { transform: translateY(0) rotate(45deg); opacity: 1; }
       100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
     }
 
-    .carta {
-      position: fixed;
-      bottom: -100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 320px;
-      height: 360px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #900;
-      font-weight: bold;
+    /* FOOTER */
+    footer {
+      background: rgba(0,0,0,0.7);
       text-align: center;
-      padding: 20px;
-      transition: bottom 2s ease;
-      z-index: 10;
-    }
-
-    .carta.abierta { bottom: 30%; }
-
-    .boton-abrir {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 15px 30px;
-      background: red;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-      z-index: 11;
-    }
-
-    .flecha {
-      position: fixed;
-      bottom: 70px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2em;
-      color: white;
-      animation: parpadeo 1s infinite;
-      z-index: 11;
-    }
-
-    @keyframes parpadeo {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .letra {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease;
-    }
-
-    .letra.visible {
-      opacity: 1;
-      transform: translateY(0);
+      padding: 1rem;
+      color: #fff;
+      margin-top: 2rem;
     }
   </style>
 </head>
 
 <body>
-  <!-- Audio con enlace directo -->
-  <audio id="musica" src="cancion.mp3" autoplay muted loop></audio>
-
-  <div class="flecha">⬇️ Dale click</div>
-  <button class="boton-abrir" onclick="abrirCarta()">Abrir carta 💌</button>
-
-  <div id="carta" class="carta">
-    Querida Ingridd, eres una personita muy especial
-    para mi, de la nada aparecio esta pequeñita en mi vida jkasjkas,
-    eres muy grandiosa, tienes un hermoso cabello, tienes lo ojos mas preciosos que he visto en mi vida,
-    de tu cabello ni que hablar es muy hermosoo y tu eres muy bella, yo confio en ti, se que lograras todo lo que te propones,
-    yo esatre para poyarte en todo lo que pueda, siempre podras contar conmigo en todo, esta es literalmente
-    mi primera pagina web en internet asjhjas te imaginas que le presente de trabajo esta pagina a mi profe!!??
-     xddd y bueno mientras vaya practicando ire actualizando y agregando cositaaaaaaas. ESTA PAGINA WEB TE LA DEDICARE A TI 💖
-  </div>
-
+  <!-- ANIMACIONES -->
   <div id="contenedor-palabras"></div>
   <div id="contenedor-corazones"></div>
 
-  <section style="max-width: 600px; margin: auto; color: white; padding: 50px;">
-    <h2 style="text-align: center;">💌 Carta para ti</h2>
-   
+  <!-- HEADER -->
+  <header>
+    <h1>Para Ti - Mi Ingridd 💖</h1>
+    <p>Gracias por llenarme de amor, TE AMOOOOOOO 🌸</p>
+  </header>
+
+  <!-- SECCIONES -->
+  <section class="container">
+    <h2>🌹 Lo que siento por ti</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="2.jpeg" alt="Amor">
+        <h3>Mi Amor</h3>
+        <p>Desde que llegaste, mi vida tiene más inspiracion. Gracias por todo, se que el futuro nos tiene grandes cosas y quiero cumplirlas todas contigo mi bb hermosa.</p>
+      </div>
+      <div class="card">
+        <img src="4.jpeg" alt="Sonrisa">
+        <h3>Tu Sonrisa</h3>
+        <p>Tu sonrisa ilumina mis días y me recuerda lo afortunado que soy de tenerte.</p>
+      </div>
+      <div class="card">
+        <img src="1.jpeg" alt="Sueños">
+        <h3>Mi Ingridd</h3>
+        <p>Confio en ti mi amor, me enacantan esos ojitos hermosos que tienes
+            , tus rulitos me encantan, tu voz me derrite y tu cuerpo mi comida favorita bb
+        </p>
+      </div>
+    </div>
   </section>
 
+  <section class="container">
+    <h2>💌 Palabras para ti</h2>
+    <p>
+      Ingridd, te amo demasiado, llegaste a mi vida sin que me lo esperar,
+      me llenas de amor y felicidad, te hagro recordar que siempre te amare, eres muy hermosa mi niña pequeña,
+      y tu siempre estaras en mi corazon, te amor con todo mi ser, besitos en tus cachetitos preciosa, MUACK <3
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Con todo mi amor 💕 - Dieguito, el amor de tu vida </p>
+  </footer>
+
   <script>
-    // Reproducir música al clic
-    window.addEventListener("click", () => {
-      const audio = document.getElementById("musica");
-      audio.muted = false;
-      audio.play();
-    }, { once: true });
-
-    // Carta animada
-    function abrirCarta() {
-      document.getElementById("carta").classList.add("abierta");
-    }
-
-    // Letras visibles al hacer scroll
-    const letras = document.querySelectorAll(".letra");
-    window.addEventListener("scroll", () => {
-      letras.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 50) {
-          el.classList.add("visible");
-        }
-      });
-    });
-
     // Lluvia de palabras
-    const palabras = ["Hermosa", "Preciosa", "Bella", "Ingridd", "Doncella", "Dulce", "Encantadora"];
+    const palabras = ["Hermosa", "Preciosa", "Bella", "Ingridd", "Mi Amor", "Dulzura", "Encanto"];
     setInterval(() => {
       const palabra = document.createElement('div');
       palabra.classList.add('palabra-lluvia');
       palabra.style.left = Math.random() * 90 + "%";
       palabra.innerText = palabras[Math.floor(Math.random() * palabras.length)];
       document.getElementById("contenedor-palabras").appendChild(palabra);
-      setTimeout(() => palabra.remove(), 5000);
-    }, 700);
+      setTimeout(() => palabra.remove(), 6000);
+    }, 1000);
 
     // Corazones flotando
     setInterval(() => {
@@ -190,7 +207,7 @@
       corazon.style.animationDuration = (5 + Math.random() * 5) + "s";
       document.getElementById("contenedor-corazones").appendChild(corazon);
       setTimeout(() => corazon.remove(), 10000);
-    }, 300);
+    }, 400);
   </script>
 </body>
 </html>
